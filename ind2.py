@@ -18,12 +18,12 @@ if __name__ == '__main__':
         exit(1)
 
     A_0 = 0    
-    for i in A:
-        if i == 0:
+    for i in range(len(A)):
+        if A[i] == 0:
             A_0 += 1
 
-    for i, m in enumerate(A):
-        if m == min(A):
+    for i in range(len(A)):
+        if A[i] == min(A):
             x = i
             break    
     s = sum(A[x+1:])
@@ -34,7 +34,6 @@ if __name__ == '__main__':
         for i in range(len(A)):
             if math.fabs(A[i]) < math.fabs(A[n]):
                 n = i
-        i = A.index(min(A))
         B += (A[n],)
         A = (A[:n]) + (A[n+1:])
         n = 0
