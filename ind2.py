@@ -11,28 +11,27 @@ import math
 
 if __name__ == '__main__':
     A = tuple(map(float, input().split()))
-    x = 0
 
     if len(A) != 10:
         print("Неверный размер списка", file=sys.stderr)
         exit(1)
 
     A_0 = 0    
-    for i in range(len(A)):
-        if A[i] == 0:
+    for i in A:
+        if i == 0:
             A_0 += 1
 
-    for i in range(len(A)):
-        if A[i] == min(A):
-            x = i
-            break    
-    s = sum(A[x+1:])
+    n = 0
+    for i, a in enumerate(A):
+        if a < A[n]:
+            n = i
+    s = sum(A[n+1:])
 
     B = ()
     n = 0
     while True:
-        for i in range(len(A)):
-            if math.fabs(A[i]) < math.fabs(A[n]):
+        for i, a in enumerate(A):
+            if math.fabs(a) < math.fabs(A[n]):
                 n = i
         B += (A[n],)
         A = (A[:n]) + (A[n+1:])

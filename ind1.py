@@ -9,17 +9,18 @@ import sys
 if __name__ == '__main__':
 
     A = tuple(map(int, input().split()))
-    i = 0
-    x = 0
 
     if len(A) != 10:
         print("Неверный размер кортежа", file=sys.stderr)
         exit(1)
 
-    for i in range(len(A)):
-        if A[i] == max(A):
-            x = A[i]
-            break
+    n = 0
+    for i, a in enumerate(A):
+        if a > A[n]:
+            n = i
 
-    B = (x,) + A[1:i] + (A[0],) + A[i+1:]
-    print(B)
+    if n == 0:
+        print(A)
+    else:
+        B = (A[n],) + A[1:n] + (A[0],) + A[n+1:]
+        print(B)
